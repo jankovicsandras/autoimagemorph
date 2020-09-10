@@ -21,29 +21,36 @@ David's Python Image Morpher (PIM) is a great tool with a nice GUI. You should u
 Be careful when using the required ```-outprefix``` parameter.  The program overwrites ```<outprefix><sequencenumber>.png``` files without warning. Example: ```... -outprefix f ...``` can overwrite ```f1.png```, ```f2.png``` ... Backup your png files before running the program and avoid name conflicts.
 
 ## Examples
-### Help:
+Help:
+
 ```python autoimagemorph.py -h```
 
-### This will create and save ```f1.png```, ```f2.png```, ... ```f29.png```, then ```f31.png```, ```f32.png```, ... ```f59.png``` creating a continuous image sequence between the keyframes. The keyframes ```f0.png```, ```f30.png``` and ```f60.png``` will not be modified (overwritten), but only if the framerate matches their filename.
-```python autoimagemorph.py -inframes ['f0.png','f30.png','f60.png'] -frameprefix f -framerate 30```
+This will create and save ```f1.png```, ```f2.png```, ... ```f29.png```, then ```f31.png```, ```f32.png```, ... ```f59.png``` creating a continuous image sequence between the keyframes. The keyframes ```f0.png```, ```f30.png``` and ```f60.png``` will not be modified (overwritten), but only if the framerate matches their filename.
 
-### This is how the logo ```f.gif``` was created:
+```python autoimagemorph.py -inframes "['f0.png','f30.png','f60.png']" -outprefix f -framerate 30```
+
+This is how the logo ```f.gif``` was created:
 
 1. Got some [van Gogh self portraits from Wikipedia](https://en.wikipedia.org/wiki/Vincent_van_Gogh) , converted and renamed them to keyframes ```f0.png```, ```f30.png```, ...
 
 2. Ran this and took a nap. :)  The process took more than an hour.
-```python autoimagemorph.py -inframes "['f0.png','f30.png','f60.png','f90.png','f120.png','f150.png','f0.png']" -frameprefix f -framerate 30 -subpixel 4```
+
+```python autoimagemorph.py -inframes "['f0.png','f30.png','f60.png','f90.png','f120.png','f150.png','f0.png']" -outprefix f -framerate 30 -subpixel 4```
 
 3. FFmpeg postprocessing:
+
 ```ffmpeg -framerate 15 -i f%d.png f.gif```
 
 ## Install dependencies:
 ```pip install scipy numpy matplotlib opencv-python```
 
 ## Recommended postprocessing:
-Install FFmpeg https://ffmpeg.org/
+Install FFmpeg:  https://ffmpeg.org/
+
 Then, from command line:
+
 ```ffmpeg -framerate 15 -i frame%d.png output.avi```
+
 ```ffmpeg -framerate 15 -i frame%d.png output.gif```
 
 ## TODO:
