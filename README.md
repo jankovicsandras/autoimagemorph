@@ -25,10 +25,12 @@ Help:
 
 ```python autoimagemorph.py -h```
 
+----
 This will create and save ```f1.png```, ```f2.png```, ... ```f29.png```, then ```f31.png```, ```f32.png```, ... ```f59.png``` creating a continuous image sequence between the keyframes. The keyframes ```f0.png```, ```f30.png``` and ```f60.png``` will not be modified (overwritten), but only if the framerate matches their filename.
 
 ```python autoimagemorph.py -inframes "['f0.png','f30.png','f60.png']" -outprefix f -framerate 30```
 
+----
 This is how the logo ```f.gif``` was created:
 
 1. Got some [van Gogh self portraits from Wikipedia](https://en.wikipedia.org/wiki/Vincent_van_Gogh) , converted and renamed them to keyframes ```f0.png```, ```f30.png```, ...
