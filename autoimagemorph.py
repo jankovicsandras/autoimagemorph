@@ -202,7 +202,7 @@ def autofeaturepoints(leimg, riimg, featuregridsize, showfeatures):
                     featurepoints = cv2.goodFeaturesToTrack(gray,1,0.1,10) # TODO: parameters can be tuned
                     if featurepoints is None:
                         featurepoints = [[[ h/2, w/2 ]]]
-                    featurepoints = np.int0(featurepoints)
+                    featurepoints = np.int32(featurepoints)
                     
                     # add feature point to result, optionally draw
                     for featurepoint in featurepoints:
